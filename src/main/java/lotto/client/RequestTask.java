@@ -8,7 +8,6 @@ public interface RequestTask<T> extends TaskRunnable {
     @Override
     default void run() {
         T request = makeRequest();
-        printRequest(request);
         addBean(request);
     }
 
@@ -32,8 +31,6 @@ public interface RequestTask<T> extends TaskRunnable {
     String getInputMessage();
 
     T mappingRequest(String readLine);
-
-    void printRequest(T request);
 
     CustomConsole getConsole();
 

@@ -16,6 +16,11 @@ public class DetermineLottoSizeTask implements RequestTask<LottoSize> {
         this.applicationContext = applicationContext;
     }
 
+    @Override
+    public void run() {
+        RequestTask.super.run();
+        printRequest(applicationContext.getBean(ApplicationContextKey.LOTTO_SIZE, LottoSize.class));
+    }
 
     @Override
     public String getInputMessage() {
@@ -33,8 +38,8 @@ public class DetermineLottoSizeTask implements RequestTask<LottoSize> {
 
     }
 
-    @Override
-    public void printRequest(LottoSize request) {
+
+    private void printRequest(LottoSize request) {
         System.out.println("%d개를 구매했습니다.".formatted(request.getSize()));
     }
 
