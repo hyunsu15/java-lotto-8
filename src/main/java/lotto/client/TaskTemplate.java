@@ -1,6 +1,7 @@
 package lotto.client;
 
 import lotto.ApplicationContext;
+import lotto.ApplicationContextKey;
 import lotto.input.CustomConsole;
 import lotto.util.ErrorMessageMaker;
 
@@ -25,7 +26,7 @@ abstract public class TaskTemplate<T, R> implements TaskRunnable {
 
         R response = mappingResponse(input);
         printResponse(response);
-        applicationContext.addBean("", response);
+        applicationContext.addBean(getApplicationContextKey(), response);
     }
 
     public T getRequest() {
@@ -50,5 +51,5 @@ abstract public class TaskTemplate<T, R> implements TaskRunnable {
 
     protected abstract R mappingResponse(T request);
 
-    protected abstract String getBeanName();
+    protected abstract ApplicationContextKey getApplicationContextKey();
 }

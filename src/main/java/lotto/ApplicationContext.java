@@ -5,24 +5,24 @@ import java.util.Map;
 import lotto.util.ErrorMessageMaker;
 
 public class ApplicationContext {
-    private Map<String, Object> map;
+    private Map<ApplicationContextKey, Object> beans;
 
     public ApplicationContext() {
         this(new HashMap<>());
     }
 
-    public ApplicationContext(Map<String, Object> map) {
-        this.map = map;
+    public ApplicationContext(Map<ApplicationContextKey, Object> beans) {
+        this.beans = beans;
     }
 
-    public <T> T getBean(String key, Class<T> type) {
-        if (!map.containsKey(key)) {
+    public <T> T getBean(ApplicationContextKey key, Class<T> type) {
+        if (!beans.containsKey(key)) {
             throw new IllegalArgumentException(ErrorMessageMaker.getErrorMessage("없는 빈조회 함. key:%s".formatted(key)));
         }
-        return type.cast(map.get(key));
+        return type.cast(beans.get(key));
     }
 
-    public void addBean(String key, Object value) {
-        map.put(key, value);
+    public void addBean(ApplicationContextKey key, Object value) {
+        beans.put(key, value);
     }
 }
