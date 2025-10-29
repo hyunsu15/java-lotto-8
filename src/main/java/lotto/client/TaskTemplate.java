@@ -29,7 +29,7 @@ abstract public class TaskTemplate<T, R> implements TaskRunnable {
         applicationContext.addBean(getApplicationContextKey(), response);
     }
 
-    public T getRequest() {
+    protected T getRequest() {
         try {
             String readLine = customConsole.readLine();
             T request = mappingRequest(readLine);
