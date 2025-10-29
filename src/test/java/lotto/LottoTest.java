@@ -2,10 +2,13 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.Arrays;
 import java.util.List;
 import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class LottoTest {
     @Test
@@ -21,5 +24,18 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // TODO: 추가 기능 구현에 따른 테스트 코드 작성
+    @DisplayName("로또 번호는 1-45 사이 여야한다.")
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1,2,3,4,5,46",
+            "0,2,3,4,5,45",
+
+    }, delimiter = '+')
+    void test1(String line) {
+        List<Integer> numbers = Arrays.stream(line.split(",")).map(Integer::parseInt).toList();
+        assertThatThrownBy(() -> new Lotto(numbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }

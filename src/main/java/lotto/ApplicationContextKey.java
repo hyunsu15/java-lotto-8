@@ -1,5 +1,5 @@
 package lotto;
 
 public enum ApplicationContextKey {
-    LOTTO_SIZE;
+    LOTTO_SIZE, LOTTOS;
 }
