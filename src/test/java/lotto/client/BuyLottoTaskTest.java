@@ -3,6 +3,7 @@ package lotto.client;
 import java.util.List;
 import lotto.ApplicationContext;
 import lotto.ApplicationContextKey;
+import lotto.domain.LottoSize;
 import lotto.service.LottoNumberGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +18,7 @@ class BuyLottoTaskTest {
 
     private TaskRunnable getTask(List<Integer> number) {
         ApplicationContext applicationContext = new ApplicationContext();
-        applicationContext.addBean(ApplicationContextKey.LOTTO_SIZE, 1);
+        applicationContext.addBean(ApplicationContextKey.LOTTO_SIZE, new LottoSize(1_000));
         return new BuyLottoTask(new LottoNumberGenerator() {
             @Override
             public List<Integer> generateNumbers() {

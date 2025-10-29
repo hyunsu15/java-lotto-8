@@ -2,49 +2,49 @@ package lotto.client;
 
 import lotto.ApplicationContext;
 import lotto.ApplicationContextKey;
+import lotto.domain.LottoSize;
 import lotto.input.CustomConsole;
 
-public class DetermineLottoSizeTask extends TaskTemplate<Integer, Integer> {
+public class DetermineLottoSizeTask implements RequestTask<LottoSize> {
 
     private static final int BUY_UNIT = 1_000;
+    private final CustomConsole console;
+    private final ApplicationContext applicationContext;
 
-    public DetermineLottoSizeTask(CustomConsole customConsole, ApplicationContext applicationContext) {
-        super(customConsole, applicationContext);
+    public DetermineLottoSizeTask(CustomConsole console, ApplicationContext applicationContext) {
+        this.console = console;
+        this.applicationContext = applicationContext;
     }
 
 
     @Override
-    protected String getInputMessage() {
+    public String getInputMessage() {
         return "구입금액을 입력해 주세요.";
     }
 
     @Override
-    protected Integer mappingRequest(String readLine) {
+    public LottoSize mappingRequest(String readLine) {
         try {
-            return Integer.parseInt(readLine);
+            Integer size = Integer.parseInt(readLine);
+            return new LottoSize(size);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자 변환이 되지않습니다. %s".formatted(readLine));
         }
+
     }
 
     @Override
-    protected void validateRequest(Integer request) {
-        LottoSizeValidator.validate(request);
+    public void printRequest(LottoSize request) {
+        System.out.println("%d개를 구매했습니다.".formatted(request.getSize()));
     }
 
     @Override
-    protected void printResponse(Integer response) {
-        System.out.println("%d개를 구매했습니다".formatted(response));
+    public CustomConsole getConsole() {
+        return console;
     }
 
     @Override
-    protected Integer mappingResponse(Integer request) {
-        return request / BUY_UNIT;
+    public void addBean(LottoSize request) {
+        applicationContext.addBean(ApplicationContextKey.LOTTO_SIZE, request);
     }
-
-    @Override
-    protected ApplicationContextKey getApplicationContextKey() {
-        return ApplicationContextKey.LOTTO_SIZE;
-    }
-
 }
