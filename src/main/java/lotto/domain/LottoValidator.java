@@ -11,7 +11,7 @@ public class LottoValidator {
     private LottoValidator() {
     }
 
-    static void validate(List<Integer> numbers) {
+    public static void validate(List<Integer> numbers) {
         if (numbers.size() != Lotto.SIZE) {
             throw new IllegalArgumentException(NOT_SIX_SIZE_ERROR_MESSAGE);
         }
