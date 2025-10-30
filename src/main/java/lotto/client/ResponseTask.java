@@ -1,19 +1,18 @@
 package lotto.client;
 
-public interface ResponseTask<T, R> extends TaskRunnable {
+public interface ResponseTask<R> extends TaskRunnable {
 
     @Override
     default void run() {
-        R response = mappingResponse(getRequest());
+        R response = mappingResponse();
         printResponse(response);
         addBean(response);
     }
 
     void printResponse(R response);
 
-    R mappingResponse(T request);
+    R mappingResponse();
 
-    T getRequest();
 
     void addBean(R response);
 }

@@ -10,7 +10,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoSize;
 import lotto.service.LottoNumberGenerator;
 
-public class BuyLottoTask implements ResponseTask<Integer, List<Lotto>> {
+public class BuyLottoTask implements ResponseTask<List<Lotto>> {
     private final LottoNumberGenerator numberGenerator;
     private final ApplicationContext applicationContext;
 
@@ -31,15 +31,11 @@ public class BuyLottoTask implements ResponseTask<Integer, List<Lotto>> {
     }
 
     @Override
-    public List<Lotto> mappingResponse(Integer request) {
-        return IntStream.range(0, request)
+    public List<Lotto> mappingResponse() {
+        Integer size = applicationContext.getBean(ApplicationContextKey.LOTTO_SIZE, LottoSize.class).getSize();
+        return IntStream.range(0, size)
                 .mapToObj(i -> new Lotto(numberGenerator.generateNumbers()))
                 .toList();
-    }
-
-    @Override
-    public Integer getRequest() {
-        return applicationContext.getBean(ApplicationContextKey.LOTTO_SIZE, LottoSize.class).getSize();
     }
 
     @Override
