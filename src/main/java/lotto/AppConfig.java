@@ -5,6 +5,7 @@ import lotto.client.AnswerBonusLottoNumberTask;
 import lotto.client.AnswerLottoTask;
 import lotto.client.BuyLottoTask;
 import lotto.client.Client;
+import lotto.client.CompareLottoTask;
 import lotto.client.DetermineLottoSizeTask;
 import lotto.client.TaskRunnable;
 import lotto.input.CustomConsole;
@@ -24,6 +25,7 @@ public class AppConfig {
                 , new BuyLottoTask(new LottoNumberGenerator(), applicationContext)
                 , new AnswerLottoTask(customConsole, applicationContext)
                 , new AnswerBonusLottoNumberTask(customConsole, applicationContext)
+                , new CompareLottoTask(applicationContext)
         );
     }
 

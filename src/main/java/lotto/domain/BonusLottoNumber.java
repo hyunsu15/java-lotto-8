@@ -18,4 +18,8 @@ public class BonusLottoNumber {
     public int getLottoNumber() {
         return lottoNumber;
     }
+
+    public boolean contains(Integer number) {
+        return lottoNumber == number;
+    }
 }

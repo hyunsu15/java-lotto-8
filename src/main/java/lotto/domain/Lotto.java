@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.Collections;
 import java.util.List;
 
-public class Lotto {
+public class Lotto implements LottoMatcher {
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 45;
     public static final int SIZE = 6;
@@ -21,5 +21,9 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return Collections.unmodifiableList(numbers);
+    }
+
+    public boolean contains(Integer number) {
+        return numbers.contains(number);
     }
 }
