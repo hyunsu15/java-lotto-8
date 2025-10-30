@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import lotto.client.AnswerBonusLottoNumberTask;
 import lotto.client.AnswerLottoTask;
 import lotto.client.BuyLottoTask;
 import lotto.client.Client;
@@ -22,6 +23,7 @@ public class AppConfig {
                 new DetermineLottoSizeTask(customConsole, applicationContext)
                 , new BuyLottoTask(new LottoNumberGenerator(), applicationContext)
                 , new AnswerLottoTask(customConsole, applicationContext)
+                , new AnswerBonusLottoNumberTask(customConsole, applicationContext)
         );
     }
 
