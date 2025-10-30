@@ -5,9 +5,9 @@ public class LottoSize {
 
     private final Integer size;
 
-    public LottoSize(Integer size) {
-        LottoSizeValidator.validate(size);
-        this.size = size / BUY_UNIT;
+    public LottoSize(Integer money) {
+        LottoSizeValidator.validate(money);
+        this.size = money / BUY_UNIT;
     }
 
     public Integer getSize() {

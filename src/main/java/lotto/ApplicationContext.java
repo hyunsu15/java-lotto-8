@@ -5,6 +5,7 @@ import java.util.Map;
 import lotto.util.ErrorMessageMaker;
 
 public class ApplicationContext {
+    private static final String NOT_FOUND_BEAN_EXCEPTION = "없는 빈조회 함. key:%s";
     private Map<ApplicationContextKey, Object> beans;
 
     public ApplicationContext() {
@@ -17,7 +18,8 @@ public class ApplicationContext {
 
     public <T> T getBean(ApplicationContextKey key, Class<T> type) {
         if (!beans.containsKey(key)) {
-            throw new IllegalArgumentException(ErrorMessageMaker.getErrorMessage("없는 빈조회 함. key:%s".formatted(key)));
+            throw new IllegalArgumentException(
+                    ErrorMessageMaker.getErrorMessage(NOT_FOUND_BEAN_EXCEPTION).formatted(key));
         }
         return type.cast(beans.get(key));
     }
