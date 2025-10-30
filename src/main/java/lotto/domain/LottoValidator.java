@@ -12,7 +12,7 @@ public class LottoValidator {
     }
 
     static void validate(List<Integer> numbers) {
-        if (numbers.size() != Lotto.LOTTO_SIZE) {
+        if (numbers.size() != Lotto.SIZE) {
             throw new IllegalArgumentException(NOT_SIX_SIZE_ERROR_MESSAGE);
         }
         if (numbers.stream().anyMatch(n -> Lotto.MIN_NUMBER > n || n > Lotto.MAX_NUMBER)) {
