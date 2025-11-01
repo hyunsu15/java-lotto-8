@@ -2,7 +2,7 @@ package lotto.util;
 
 public class ErrorMessageMaker {
 
-    public static final String ERROR_MESSAGE_FORMAT = "[ERROR] %s";
+    private static final String ERROR_MESSAGE_FORMAT = "[ERROR] %s";
     private static final String NULL_ERROR_MESSAGE = "메세지는 널이 되면 안됩니다.";
 
     private ErrorMessageMaker() {

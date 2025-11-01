@@ -6,7 +6,6 @@ import java.util.Map;
 import lotto.domain.LottoRank;
 
 public class CompareLottoMessage {
-
     private static final String OUTPUT_MESSAGE = "%s - %d개";
     private static final String PREFIX_LOTTO_NUMBER_SIZE = "개 일치";
     private static final String BONUS_BALL_MESSAGE = ", 보너스 볼 일치";

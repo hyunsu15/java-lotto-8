@@ -11,12 +11,10 @@ public interface RequestTask<T> extends TaskRunnable {
         addBean(request);
     }
 
-
     default T makeRequest() {
         System.out.println(getInputMessage());
         return getRequest();
     }
-
 
     private T getRequest() {
         try {

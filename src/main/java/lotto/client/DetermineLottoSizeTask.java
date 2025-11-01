@@ -6,7 +6,6 @@ import lotto.domain.LottoSize;
 import lotto.input.CustomConsole;
 
 public class DetermineLottoSizeTask implements RequestTask<LottoSize> {
-
     private static final String INPUT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String CONVERT_ERROR_MESSAGE = "숫자 변환이 되지않습니다. %s";
     private static final String REQUEST_MESSAGE = "%d개를 구매했습니다.";
