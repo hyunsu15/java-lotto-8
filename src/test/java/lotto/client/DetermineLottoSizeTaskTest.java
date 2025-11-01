@@ -7,6 +7,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+//todo displayName 좀더 명확하게 수정해야함
 class DetermineLottoSizeTaskTest {
 
     @Test

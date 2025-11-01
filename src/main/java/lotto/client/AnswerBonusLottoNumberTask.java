@@ -3,6 +3,7 @@ package lotto.client;
 import lotto.ApplicationContext;
 import lotto.ApplicationContextKey;
 import lotto.domain.BonusLottoNumber;
+import lotto.domain.Lotto;
 import lotto.input.CustomConsole;
 
 public class AnswerBonusLottoNumberTask implements RequestTask<BonusLottoNumber> {
@@ -23,9 +24,10 @@ public class AnswerBonusLottoNumberTask implements RequestTask<BonusLottoNumber>
 
     @Override
     public BonusLottoNumber mappingRequest(String readLine) {
+        Lotto lotto = context.getBean(ApplicationContextKey.ANSWER_LOTTO, Lotto.class);
         try {
             int lottoNumber = Integer.parseInt(readLine);
-            return new BonusLottoNumber(lottoNumber);
+            return new BonusLottoNumber(lottoNumber, lotto);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(CONVERT_ERROR_MESSAGE.formatted(readLine));
         }
