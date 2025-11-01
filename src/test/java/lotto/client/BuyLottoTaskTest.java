@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class BuyLottoTaskTest {
     @Test
-    @DisplayName("해피케이스")
+    @DisplayName("로또 구매한 내용을 보여준다.")
     public void test() {
         Assertions.assertThatCode(() -> getTask(List.of(1, 3, 2, 4, 5, 6)).run()).doesNotThrowAnyException();
     }
