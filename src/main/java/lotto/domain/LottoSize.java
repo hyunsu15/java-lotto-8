@@ -13,4 +13,8 @@ public class LottoSize {
     public Integer getSize() {
         return size;
     }
+
+    public Integer getBuyMoney() {
+        return size * BUY_UNIT;
+    }
 }
