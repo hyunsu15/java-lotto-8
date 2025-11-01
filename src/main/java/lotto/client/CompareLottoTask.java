@@ -35,6 +35,11 @@ public class CompareLottoTask implements ResponseTask<Map<LottoRank, Integer>> {
         BonusLottoNumber bonusLottoNumber = context.getBean(ApplicationContextKey.ANSWER_BONUS_LOTTO_NUMBER,
                 BonusLottoNumber.class);
         List<Lotto> lottos = context.getBean(ApplicationContextKey.LOTTOS, List.class);
+        return getHistory(lottos, answerLotto, bonusLottoNumber);
+    }
+
+    private Map<LottoRank, Integer> getHistory(List<Lotto> lottos, Lotto answerLotto,
+                                               BonusLottoNumber bonusLottoNumber) {
         Map<LottoRank, Integer> history = new HashMap<>();
         Arrays.stream(LottoRank.values())
                 .forEach(lottoRank -> history.put(lottoRank, HISTORY_DEFAULT_VALUE));
